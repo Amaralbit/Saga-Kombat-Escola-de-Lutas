@@ -1,0 +1,6 @@
+{
+  "framework": null,
+  "installCommand": "echo \"skip install: static export, no build needed\"",
+  "buildCommand": "echo \"skip build: serving github-pages/ as-is\"",
+  "outputDirectory": "github-pages"
+}
