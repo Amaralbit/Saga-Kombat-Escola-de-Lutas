@@ -13,6 +13,56 @@ const modalities = [
   ['05', 'Jiu-Jitsu', 'Controle, estratégia e confiança também no chão.', 'GRAPPLING'],
 ];
 
+const schedule: [string, [string, string, string][]][] = [
+  ['Kickboxing', [
+    ['12:15', 'SEG. QUA. SEX.', 'Prof. Dhalsim'],
+    ['19:15', 'TER. QUI.', 'Prof. Dhalsim'],
+  ]],
+  ['Muaythai', [
+    ['07:10', 'SEG. QUA. SEX.', 'Prof. Lucas'],
+    ['17:00', 'SEG. QUA. SEX.', 'Prof. Lucas'],
+    ['18:20', 'TER. QUI.', 'Prof. Lucas'],
+    ['19:10', 'SEG. QUA. SEX.', 'Prof. Dhalsim'],
+    ['20:10', 'TER. QUI.', 'Prof. Lucas'],
+  ]],
+  ['Muaythai Kids', [
+    ['09:30', 'TER. QUI.', 'Prof. Dhalsim'],
+    ['16:45', 'TER. QUI.', 'Prof. Lucas'],
+    ['17:30', 'SEG. QUA. SEX.', 'Prof. Hortência'],
+    ['19:10', 'SEG. QUA.', 'Prof. Lucas'],
+  ]],
+  ['Boxe', [
+    ['18:20', 'SEG. QUA. SEX.', 'Prof. Dhalsim'],
+    ['19:10', 'TER. QUI.', 'Prof. Zangão'],
+    ['20:10', 'SEG. QUA.', 'Prof. Zangão'],
+  ]],
+  ['Crossfighting', [
+    ['09:30', 'TER. QUI.', 'Prof. Dhalsim'],
+    ['16:15', 'TER. QUI.', 'Prof. Dhalsim'],
+  ]],
+  ['Karatê Kids', [
+    ['17:30', 'TER. QUI.', 'Sensei Welber'],
+    ['18:20', 'TER. QUI.', 'Sensei Welber'],
+  ]],
+  ['Jiu Jitsu', [
+    ['20:15', 'SEG. QUA. SEX.', 'Prof. Márcio'],
+  ]],
+  ['Jiu Jitsu Kids', [
+    ['18:20', 'SEG. QUA.', 'Prof. Edyvan'],
+    ['17:30', 'TER. QUI.', 'Prof. Eduardo'],
+  ]],
+  ['Jiu Jitsu No Gi', [
+    ['11:00', 'TER. QUI.', 'Prof. Márcio'],
+  ]],
+];
+
+const scheduleRules = [
+  ['SEJA PONTUAL', 'Não permitimos atrasos além de cinco minutos.'],
+  ['NÃO ESQUEÇA', 'Sua garrafa de água.'],
+  ['OBRIGATÓRIO', 'O uso do material individual de treino em cada modalidade.'],
+  ['MANTENHA', 'Seu material em bom estado.'],
+];
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
@@ -82,7 +132,7 @@ export default function Home() {
         <a className="brand" href="#inicio" onClick={closeMenu} aria-label="Saga Kombat - Início"><span className="brand-mark"><span>SK</span></span><span className="brand-copy"><b>SAGA</b><em>KOMBAT</em></span></a>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menu" aria-expanded={menuOpen}>{menuOpen ? <X size={24} /> : <Menu size={24} />}</button>
         <nav className={menuOpen ? 'nav-links nav-links-open' : 'nav-links'}>
-          <a href="#modalidades" onClick={closeMenu}>Modalidades</a><a href="#escola" onClick={closeMenu}>A escola</a><a href="#localizacao" onClick={closeMenu}>Localização</a>
+          <a href="#modalidades" onClick={closeMenu}>Modalidades</a><a href="#horarios" onClick={closeMenu}>Horários</a><a href="#escola" onClick={closeMenu}>A escola</a><a href="#localizacao" onClick={closeMenu}>Localização</a>
           <a className="nav-cta" href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={closeMenu}>Fale com a gente <ArrowDownRight size={16} /></a>
         </nav>
       </header>
@@ -104,6 +154,30 @@ export default function Home() {
       <section className="section modalities" id="modalidades">
         <div className="section-heading" data-reveal><p className="eyebrow gold"><span /> ENCONTRE O SEU ESTILO</p><h2>CADA LUTA<br />UMA <i>JORNADA.</i></h2><p>Do primeiro treino ao próximo desafio, temos uma modalidade e uma turma prontas para receber você.</p></div>
         <div className="modality-list">{modalities.map(([number, name, description, tag], i) => <article className="modality" data-reveal style={{ '--d': i } as React.CSSProperties} key={name}><span className="modality-number">{number}</span><div><h3>{name}</h3><p>{description}</p></div><span className="modality-tag">{tag}</span><ArrowDownRight className="modality-arrow" size={25} /></article>)}</div>
+      </section>
+
+      <section className="schedule section" id="horarios">
+        <div className="schedule-heading" data-reveal><p className="eyebrow"><span /> ORGANIZE SEU TREINO</p><h2>HORÁRIO<br />DE <i>AULAS.</i></h2><p>Turmas de segunda a sexta, de manhã à noite. Encontre o horário que encaixa na sua rotina.</p></div>
+        <div className="schedule-table-wrap" data-reveal style={{ '--d': 1 } as React.CSSProperties}>
+          <div className="schedule-table">
+            {schedule.map(([name, slots]) => (
+              <div className="schedule-col" key={name}>
+                <h3>{name}</h3>
+                {slots.map(([time, days, teacher]) => (
+                  <div className="schedule-slot" key={time + days}>
+                    <span className="slot-time">{time}</span>
+                    <span className="slot-days">{days}</span>
+                    <span className="slot-teacher">{teacher}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="schedule-scroll-hint">◄ ARRASTE PARA O LADO PARA VER TODAS AS TURMAS ►</p>
+        <ul className="schedule-rules" data-reveal style={{ '--d': 2 } as React.CSSProperties}>
+          {scheduleRules.map(([title, text]) => <li key={title}><b>{title}</b><span>{text}</span></li>)}
+        </ul>
       </section>
 
       <section className="school" id="escola">
