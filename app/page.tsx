@@ -83,7 +83,7 @@ export default function Home() {
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menu" aria-expanded={menuOpen}>{menuOpen ? <X size={24} /> : <Menu size={24} />}</button>
         <nav className={menuOpen ? 'nav-links nav-links-open' : 'nav-links'}>
           <a href="#modalidades" onClick={closeMenu}>Modalidades</a><a href="#escola" onClick={closeMenu}>A escola</a><a href="#localizacao" onClick={closeMenu}>Localização</a>
-          <a className="nav-cta" href="https://www.instagram.com/sagakombat/" target="_blank" rel="noreferrer" onClick={closeMenu}>Fale com a gente <ArrowDownRight size={16} /></a>
+          <a className="nav-cta" href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={closeMenu}>Fale com a gente <ArrowDownRight size={16} /></a>
         </nav>
       </header>
 
