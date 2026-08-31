@@ -1,7 +1,7 @@
 /* Seção "Horário de aulas": tabela construída em HTML/CSS, no mesmo idioma visual do site. */
 
 .schedule { background: #0b0a08; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
-.schedule:after { content: 'SK'; position: absolute; right: -30px; bottom: -110px; color: #ffffff06; font: 600 420px/1 Impact, sans-serif; pointer-events: none; }
+.schedule:after { content: 'SK'; position: absolute; right: -30px; bottom: -110px; color: #ffffff06; font: 600 420px/1 'Anton',Impact, sans-serif; pointer-events: none; }
 .schedule-heading { max-width: 560px; position: relative; z-index: 1; }
 .schedule-heading > p:last-child { margin: 24px 0 0; font-size: 15px; line-height: 1.6; color: #a99c78; }
 
@@ -9,11 +9,11 @@
 .schedule-table { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(148px, 1fr); min-width: max-content; }
 .schedule-col { padding: 26px 18px 30px; border-right: 1px solid #3a2f13; }
 .schedule-col:last-child { border-right: 0; }
-.schedule-col h3 { margin: 0 0 20px; font-family: Impact, sans-serif; font-size: 16px; line-height: 1.08; letter-spacing: .02em; color: var(--gold); text-align: center; text-transform: uppercase; }
+.schedule-col h3 { margin: 0 0 20px; font-family: 'Anton',Impact, sans-serif; font-size: 16px; line-height: 1.08; letter-spacing: .02em; color: var(--gold); text-align: center; text-transform: uppercase; }
 
 .schedule-slot { text-align: center; padding: 15px 0; border-top: 1px dashed #4a3d1c; }
 .schedule-slot:first-child { border-top: 0; padding-top: 0; }
-.slot-time { display: block; font-family: Impact, sans-serif; font-size: 23px; color: #f2ede0; }
+.slot-time { display: block; font-family: 'Anton',Impact, sans-serif; font-size: 23px; color: #f2ede0; }
 .slot-days { display: block; margin-top: 5px; font-size: 10px; font-weight: 700; letter-spacing: .09em; color: #948767; }
 .slot-teacher { display: block; margin-top: 4px; font-size: 10px; font-weight: 700; letter-spacing: .03em; color: var(--gold); }
 
