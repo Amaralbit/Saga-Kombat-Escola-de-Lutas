@@ -1,5 +1,21 @@
 /* Camada de acabamento: textura, revelação no scroll, header com estado e WhatsApp flutuante. */
 
+/* --- Marca d'água de prévia: repetida na diagonal, cobrindo a página inteira sem travar cliques --- */
+.preview-watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200vmax;
+  height: 200vmax;
+  transform: translate(-50%, -50%) rotate(-28deg);
+  pointer-events: none;
+  z-index: 2000;
+  opacity: .16;
+  background-repeat: repeat;
+  background-size: 320px 190px;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='320'%20height='190'%3E%3Ctext%20x='10'%20y='115'%20font-family='Impact,sans-serif'%20font-size='46'%20letter-spacing='3'%20fill='%23efa900'%3EPR%C3%89VIA%3C/text%3E%3C/svg%3E");
+}
+
 /* --- Grão de fundo: tira a "chapadez" do gradiente liso e dá textura de foto/impresso --- */
 body::after {
   content: '';

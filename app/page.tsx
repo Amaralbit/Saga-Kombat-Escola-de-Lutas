@@ -128,6 +128,7 @@ export default function Home() {
 
   return (
     <main>
+      <div className="preview-watermark" aria-hidden="true" />
       <header className="site-header">
         <a className="brand" href="#inicio" onClick={closeMenu} aria-label="Saga Kombat - Início"><span className="brand-mark"><span>SK</span></span><span className="brand-copy"><b>SAGA</b><em>KOMBAT</em></span></a>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menu" aria-expanded={menuOpen}>{menuOpen ? <X size={24} /> : <Menu size={24} />}</button>
