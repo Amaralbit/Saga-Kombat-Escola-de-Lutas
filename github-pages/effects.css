@@ -1,0 +1,59 @@
+/* Camada de acabamento: textura, revelação no scroll, header com estado e WhatsApp flutuante. */
+
+/* --- Grão de fundo: tira a "chapadez" do gradiente liso e dá textura de foto/impresso --- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: .05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Entrada do herói ao carregar a página --- */
+.hero-copy .eyebrow, .hero-copy h1, .hero-copy .lead, .hero-copy .hero-actions { opacity: 0; transform: translateY(22px); animation: hero-in .8s cubic-bezier(.16,.8,.3,1) forwards; }
+.hero-copy .eyebrow { animation-delay: .05s; }
+.hero-copy h1 { animation-delay: .16s; }
+.hero-copy .lead { animation-delay: .3s; }
+.hero-copy .hero-actions { animation-delay: .42s; }
+@keyframes hero-in { to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .hero-copy .eyebrow, .hero-copy h1, .hero-copy .lead, .hero-copy .hero-actions { opacity: 1; transform: none; animation: none; } }
+
+/* --- Header ganha peso só depois que a página rola --- */
+.site-header { transition: background-color .35s ease, border-color .35s ease, box-shadow .35s ease; }
+.site-header.is-scrolled { background: #090909e8; backdrop-filter: blur(10px); border-bottom-color: #ffffff2e; box-shadow: 0 12px 30px #00000059; }
+
+/* --- Revelação suave ao entrar na tela --- */
+[data-reveal] { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.16,.8,.3,1), transform .8s cubic-bezier(.16,.8,.3,1); transition-delay: calc(var(--d, 0) * 70ms); }
+[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; transition: none; } }
+
+/* --- Brilho magnético nos botões dourados/outline, seguindo o cursor --- */
+.button { position: relative; overflow: hidden; isolation: isolate; }
+.button::before { content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .3s ease; background: radial-gradient(160px circle at var(--mx, 50%) var(--my, 50%), #ffffff55, transparent 70%); }
+.button:hover::before { opacity: 1; }
+.button.outline::before { background: radial-gradient(160px circle at var(--mx, 50%) var(--my, 50%), #f2d06033, transparent 70%); }
+
+/* --- Números e cards ganham leve profundidade no hover, em vez do hover "plano" --- */
+.fight-list article { will-change: transform; }
+.fight-list article:hover h3 { color: #171614; text-shadow: 0 0 22px #b69d6455; }
+.fight-list article:hover strong { transform: translateX(4px); color: var(--gold); }
+.fight-list article strong { display: inline-block; transition: transform .3s ease, color .3s ease; }
+
+/* --- Estampa do herói respira junto com o mouse (paralaxe leve) --- */
+.hero-visual { will-change: transform; }
+.rings, .stamp { transition: transform .2s ease-out; }
+
+/* --- Botão flutuante do WhatsApp --- */
+.whatsapp-fab { position: fixed; right: 22px; bottom: 22px; z-index: 1000; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.whatsapp-fab .wa-label { background: #101010; color: #f5f1e7; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 10px 14px; border: 1px solid #2f2a20; white-space: nowrap; opacity: 0; transform: translateX(8px); transition: opacity .25s ease, transform .25s ease; box-shadow: 0 10px 24px #0007; }
+.whatsapp-fab:hover .wa-label, .whatsapp-fab:focus-visible .wa-label { opacity: 1; transform: translateX(0); }
+.whatsapp-fab .wa-circle { position: relative; width: 60px; height: 60px; flex: none; display: grid; place-items: center; border-radius: 50%; background: #25d366; box-shadow: 0 10px 26px #000a, 0 0 0 2px #ffffff14 inset; transition: transform .25s ease, box-shadow .25s ease; }
+.whatsapp-fab:hover .wa-circle { transform: scale(1.08); box-shadow: 0 14px 32px #000c, 0 0 0 2px #ffffff22 inset; }
+.whatsapp-fab .wa-circle svg { width: 30px; height: 30px; fill: #fff; }
+.whatsapp-fab .wa-circle::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25d36699; animation: wa-ping 2.4s cubic-bezier(0,0,.3,1) infinite; }
+@keyframes wa-ping { 0% { transform: scale(1); opacity: .85; } 100% { transform: scale(1.55); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .whatsapp-fab .wa-circle::after { animation: none; } }
+@media (max-width: 550px) { .whatsapp-fab { right: 16px; bottom: 16px; } .whatsapp-fab .wa-circle { width: 54px; height: 54px; } .whatsapp-fab .wa-circle svg { width: 27px; height: 27px; } .whatsapp-fab .wa-label { display: none; } }
