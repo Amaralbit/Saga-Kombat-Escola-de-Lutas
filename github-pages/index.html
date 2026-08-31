@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="./saga-kombat-icon.png" />
     <link rel="apple-touch-icon" href="./saga-kombat-icon.png" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./gallery-overrides.css" />
     <title>Saga Kombat | Escola de Lutas em Goiânia</title>
   </head>
   <body>
@@ -27,7 +28,12 @@
         <div class="hero-visual"><div class="hero-photo"></div><div class="rings"><i></i><i></i><i></i></div><div class="stamp">2009<strong>SAGA<br>KOMBAT</strong>TEAM</div><p class="live"><span></span>TREINO. FOCO. EVOLUÇÃO.</p></div>
         <a class="scroll" href="#modalidades">ROLE PARA LUTAR ↓</a>
       </section>
-      <div class="marquee">MUAY THAI <i>✦</i> BOXE <i>✦</i> JIU-JITSU <i>✦</i> KARATÊ <i>✦</i> KICKBOXING <i>✦</i> MUAY THAI <i>✦</i> BOXE <i>✦</i> JIU-JITSU <i>✦</i></div>
+      <div class="marquee" aria-label="Modalidades da Saga Kombat">
+        <div class="marquee-track">
+          <span>MUAY THAI <i>✦</i> BOXE <i>✦</i> JIU-JITSU <i>✦</i> KARATÊ <i>✦</i> KICKBOXING <i>✦</i></span>
+          <span aria-hidden="true">MUAY THAI <i>✦</i> BOXE <i>✦</i> JIU-JITSU <i>✦</i> KARATÊ <i>✦</i> KICKBOXING <i>✦</i></span>
+        </div>
+      </div>
 
       <section class="modalities section" id="modalidades">
         <div class="heading"><p class="eyebrow dark"><span></span> ENCONTRE O SEU ESTILO</p><h2>CADA LUTA<br>UMA <i>JORNADA.</i></h2><p>Do primeiro treino ao próximo desafio, temos uma modalidade e uma turma prontas para receber você.</p></div>
@@ -37,6 +43,20 @@
           <article><small>03</small><div><h3>Karatê</h3><p>Disciplina, respeito e precisão em cada movimento.</p></div><b>FOCO</b><strong>↗</strong></article>
           <article><small>04</small><div><h3>Boxe</h3><p>Base, esquiva, velocidade e condicionamento de verdade.</p></div><b>TÉCNICA</b><strong>↗</strong></article>
           <article><small>05</small><div><h3>Jiu-Jitsu</h3><p>Controle, estratégia e confiança também no chão.</p></div><b>GRAPPLING</b><strong>↗</strong></article>
+        </div>
+      </section>
+
+      <section class="gallery-section" aria-label="Momentos da Saga Kombat">
+        <div class="gallery-heading"><p class="eyebrow"><span></span> VIVA A EXPERIÊNCIA</p><h2>UMA EQUIPE<br><i>EM MOVIMENTO.</i></h2></div>
+        <div class="gallery-viewport">
+          <div class="gallery-track">
+            <figure class="gallery-card wide"><img src="./gallery/team-muaythai.png" alt="Turma de Muay Thai da Saga Kombat em frente ao mural da academia"></figure>
+            <figure class="gallery-card tall"><img src="./gallery/boxe.png" alt="Atleta de boxe recebendo orientação no ringue"></figure>
+            <figure class="gallery-card wide"><img src="./gallery/jiu-jitsu.png" alt="Turma de Jiu-Jitsu da Saga Kombat no tatame"></figure>
+            <figure class="gallery-card wide" aria-hidden="true"><img src="./gallery/team-muaythai.png" alt=""></figure>
+            <figure class="gallery-card tall" aria-hidden="true"><img src="./gallery/boxe.png" alt=""></figure>
+            <figure class="gallery-card wide" aria-hidden="true"><img src="./gallery/jiu-jitsu.png" alt=""></figure>
+          </div>
         </div>
       </section>
 
